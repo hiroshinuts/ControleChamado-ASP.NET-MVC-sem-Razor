@@ -1,0 +1,46 @@
+﻿<div>
+    <a href="/Chamado/Form"><button class="btn btn-info">Cadastrar Novo Chamado</button></a>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nome do Sistema</th>
+                <th>Modulo do Sistema</th>
+                <th>Descrição do Chamado</th>
+                <th>Criticidade</th>
+                <th>Status</th>
+                <th>Usuario Responsavel</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var chamado in ViewBag.Chamados)
+            {
+                <tr>
+                    <td>@chamado.Id</td>
+                    <td>@chamado.NomeDoSistema</td>
+                    <td>@chamado.ModuloDoSistema</td>
+                    <td>@chamado.DescricaoDoSistema</td>
+                    <td class="corCritico">@chamado.Criticidade</td>
+                    <td class="corStatus">@chamado.Status</td>
+                    <td>@chamado.Usuario.Nome</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<script>
+
+    $('.corCritico').each(function (i, n) {
+        if ($(n).text() == 'ALTA') $(n).css('color', 'red');
+        if ($(n).text() == 'MEDIA') $(n).css('color', 'orange');
+        if ($(n).text() == 'BAIXA') $(n).css('color', 'green');
+    });
+
+    $('.corStatus').each(function (i, n) {
+        if ($(n).text() == 'ABERTO') $(n).css('color', 'red');
+        if ($(n).text() == 'EM_ANDAMENTO') $(n).css('color', 'orange');
+        if ($(n).text() == 'FECHADO') $(n).css('color', 'green');
+    });
+
+</script>

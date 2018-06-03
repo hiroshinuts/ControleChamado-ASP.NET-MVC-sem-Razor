@@ -1,0 +1,51 @@
+﻿<div class="panel panel-primary">
+    <div class="panel-heading">Cadastro de Chamado</div>
+
+    <form id="form" action="/Chamado/Adiciona" method="post">
+        <div class="form-group">
+            <label for="nome">Nome Sistema:</label>
+            <input class="form-control" id="nome" name="chamado.NomeDoSistema" required/>
+        </div>
+
+        <div class="form-group">
+            <label for="modulo">Modulo Sistema:</label>
+            <input class="form-control" id="modulo" name="chamado.ModuloDoSistema" required/>
+        </div>
+
+        <div class="form-group">
+            <label for="descricao">Descricao Sistema:</label>
+            <textarea class="form-control" id="descricao" name="chamado.DescricaoDoSistema" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="criticidade">Criticidade:</label>
+            <select class="form-control" id="criticidade" name="chamado.Criticidade" required>
+                <option value="">--Selecione--</option>
+                <option value="0">Alta</option>
+                <option value="1">Media</option>
+                <option value="2">Baixa</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="status">Status:</label>
+            <select class="form-control" id="status" name="chamado.Status" required>
+                <option value="">--Selecione--</option>
+                <option value="0">Aberto</option>
+                <option value="1">Em Andamento</option>
+                <option value="2">Fechado</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="status">Status:</label>
+            <select class="form-control" id="usuarioId" name="chamado.UsuarioId" required>
+                <option value="">--Selecione--</option>
+                @foreach (var usuario in ViewBag.Usuarios)
+                {
+                    <option name="" value="@usuario.Id">@usuario.Nome</option>
+                }
+            </select>
+        </div>
+
+        <input id="botao" class="btn btn-light" type="submit" value="Cadastrar" />
+
+    </form>
+</div>
